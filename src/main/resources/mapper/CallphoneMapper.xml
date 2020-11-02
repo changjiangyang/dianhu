@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hltx.dianhu.mapper.CallphoneMapper">
+    <resultMap id="BaseMap" type="com.hltx.dianhu.beans.Callphone">
+        <id column="id" property="id" />
+        <result column="userid" property="userid" />
+        <result column="phone" property="phone" />
+        <result column="status" property="status" />
+        <result column="addtime" property="addtime" />
+        <result column="isshow" property="isShow" />
+    </resultMap>
+
+    <sql id="baseSql" >
+        id,userid,phone,status,addtime,isshow
+    </sql>
+
+    <insert id="addCallPhone" parameterType="com.hltx.dianhu.beans.Callphone" >
+        insert into callphone
+        <trim suffix=")" prefix="(" suffixOverrides=",">
+            <if test="id != null" >id,</if>
+            <if test="userid != null" >userid,</if>
+            <if test="phone != phone" >phone,</if>
+            <if test="status != null" >status,</if>
+            <if test="addtime != null">addtime,</if>
+            <if test="isshow!=null">isshow,</if>
+        </trim>
+        values
+        <trim suffix=")" prefix="(" suffixOverrides=",">
+            <if test="id != null" >#{id},</if>
+            <if test="userid != null" >#{userid},</if>
+            <if test="phone != phone" >#{phone},</if>
+            <if test="status != null" >#{status},</if>
+            <if test="addtime != null">#{addtime},</if>
+            <if test="isshow != null">#{isshow},</if>
+        </trim>
+    </insert>
+
+    <select id="getByPage" parameterType="int" resultMap="BaseMap">
+        select <include refid="baseSql"/> from callphone
+        <if test="userid != null">
+            where userid = #{userid}
+        </if>
+        limit #{index},#{limit}
+    </select>
+
+    <select id="getCount" resultType="int">
+        select count(id) from callphone
+        <if test="userid != null">
+            where userid = #{userid}
+        </if>
+        limit #{index},#{limit}
+    </select>
+</mapper>
