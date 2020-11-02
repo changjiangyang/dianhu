@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hltx.dianhu.mapper.UsesMapper">
+    <resultMap id="baseMap" type="com.hltx.dianhu.beans.Users">
+        <id column="id" property="id" />
+        <result column="addtime" property="addtime" />
+        <result column="endtime" property="endtime" />
+        <result column="password" property="password" />
+        <result column="phone" property="phone" />
+        <result column="sn" property="sn" />
+        <result property="startTime" column="startTime" />
+        <result property="status" column="status" />
+    </resultMap>
+
+    <sql id="baseSql" >
+        id ,addtime,endtime,password,phone,sn,startTime,status
+    </sql>
+
+    <insert id="addUsers" parameterType="com.hltx.dianhu.beans.Users" >
+        insert into users
+        <trim suffix=")" prefix="(" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="addtime != null" >addtime,</if>
+            <if test="endtime != null" >endtime,</if>
+            <if test="password != null" >password,</if>
+            <if test="phone != null" >phone,</if>
+            <if test="sn != null" >sn,</if>
+            <if test="startTime != null" >startTime,</if>
+            <if test="status != null" >status,</if>
+        </trim>
+        values
+        <trim suffixOverrides="," prefix="(" suffix=")">
+            <if test="id != null">#{id},</if>
+            <if test="addtime != null" >#{addtime},</if>
+            <if test="endtime != null" >#{endtime},</if>
+            <if test="password != null" >#{password},</if>
+            <if test="phone != null" >#{phone},</if>
+            <if test="sn != null" >#{sn},</if>
+            <if test="startTime != null" >#{startTime},</if>
+            <if test="status != null" >#{status},</if>
+        </trim>
+    </insert>
+
+    <select id="login" resultMap="baseMap" parameterType="string" >
+        select <include refid="baseSql" /> from users
+        where phone = #{phone}
+    </select>
+
+    <update id="updateUsers" parameterType="com.hltx.dianhu.beans.Users">
+        update user set
+        <trim suffixOverrides=",">
+            <if test="id != null" >id = #{id},</if>
+            <if test="phone != null" >phone = #{phone},</if>
+            <if test="password != null" >password = #{password},</if>
+            <if test="sn != null" >id = #{sn},</if>
+            <if test="status != null" >status = #{status},</if>
+            <if test="addtime != null" >addtime = #{addtime},</if>
+            <if test="endtime != null" >endtime = #{endtime},</if>
+            <if test="starttime != null" >starttime = #{starttime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+</mapper>

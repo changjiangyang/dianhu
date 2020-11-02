@@ -15,7 +15,7 @@ public class Users {
 
     private String password;
 
-    private String Sn;
+    private String sn;
 
     private Integer status;
 
@@ -51,11 +51,11 @@ public class Users {
     }
 
     public String getSn() {
-        return Sn;
+        return sn;
     }
 
     public void setSn(String sn) {
-        Sn = sn;
+        sn = sn;
     }
 
     public Integer getStatus() {
