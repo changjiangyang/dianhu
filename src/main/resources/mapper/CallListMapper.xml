@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hltx.dianhu.mapper.CallListMapper">
+    <resultMap id="baseMap" type="com.hltx.dianhu.beans.CallList" >
+        <id column="id" property="id" />
+        <result column="userid" property="userid" />
+        <result column="localphone" property="loaclPhone" />
+        <result column="callphone" property="callPhone" />
+        <result column="length" property="length" />
+        <result column="calltime" property="calltime" />
+    </resultMap>
+
+    <sql id="basesql">
+        id, userid, localphone, callphone, length, calltime
+    </sql>
+
+    <insert id="addCallList" parameterType="com.hltx.dianhu.beans.CallList" >
+        insert into callList
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null" >id,</if>
+            <if test="userid != null">userid,</if>
+            <if test="localphone != null" >localphone,</if>
+            <if test="callphone != null">callphone,</if>
+            <if test="length != null ">length,</if>
+            <if test="calltime != null" >calltime,</if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null" >#{id},</if>
+            <if test="userid != null">#{userid},</if>
+            <if test="localphone != null" >#{localphone},</if>
+            <if test="callphone != null">#{callphone},</if>
+            <if test="length != null ">#{length},</if>
+            <if test="calltime != null" >#{calltime},</if>
+        </trim>
+    </insert>
+
+    <select id="getByPage" resultMap="baseMap" parameterType="int">
+        select <include refid="basesql" /> from callList
+        <if test="userid != null ">
+            where userid = #{userid}
+        </if>
+        limit #{index},#{limit}
+    </select>
+
+    <select id="getCount" resultType="int">
+        select count(id) from callList
+        <if test="userid != null ">
+            where userid = #{userid}
+        </if>
+    </select>
+</mapper>

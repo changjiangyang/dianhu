@@ -17,16 +17,9 @@ public class CallList {
 
     private Integer status;
 
-    @Override
-    public String toString() {
-        return "CallList{" +
-                "id=" + id +
-                ", userid=" + userid +
-                ", loaclPhone='" + loaclPhone + '\'' +
-                ", callPhone='" + callPhone + '\'' +
-                ", status=" + status +
-                '}';
-    }
+    private Double length;
+
+    private String calltime;
 
     public Integer getId() {
         return id;
@@ -66,5 +59,34 @@ public class CallList {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Double getLength() {
+        return length;
+    }
+
+    @Override
+    public String toString() {
+        return "CallList{" +
+                "id=" + id +
+                ", userid=" + userid +
+                ", loaclPhone='" + loaclPhone + '\'' +
+                ", callPhone='" + callPhone + '\'' +
+                ", status=" + status +
+                ", length=" + length +
+                ", calltime='" + calltime + '\'' +
+                '}';
+    }
+
+    public void setLength(Double length) {
+        this.length = length;
+    }
+
+    public String getCalltime() {
+        return calltime;
+    }
+
+    public void setCalltime(String calltime) {
+        this.calltime = calltime;
     }
 }
