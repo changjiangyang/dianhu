@@ -15,6 +15,14 @@ public class Users {
 
     private String password;
 
+    public String getSn() {
+        return sn;
+    }
+
+    public void setSn(String sn) {
+        this.sn = sn;
+    }
+
     private String sn;
 
     private Integer status;
@@ -25,6 +33,15 @@ public class Users {
 
     private Date startTime;
 
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Integer getId() {
         return id;
@@ -48,14 +65,6 @@ public class Users {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getSn() {
-        return sn;
-    }
-
-    public void setSn(String sn) {
-        sn = sn;
     }
 
     public Integer getStatus() {

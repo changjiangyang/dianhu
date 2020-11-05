@@ -11,4 +11,5 @@ public interface CallListService {
     List<CallList> getByPage(Integer userid,Integer index,Integer limit);
 
     int getCount(Integer userid);
+    int getTodayCount(Integer userid, String time);
 }

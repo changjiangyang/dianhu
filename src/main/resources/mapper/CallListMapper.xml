@@ -20,8 +20,8 @@
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null" >id,</if>
             <if test="userid != null">userid,</if>
-            <if test="localphone != null" >localphone,</if>
-            <if test="callphone != null">callphone,</if>
+            <if test="loaclPhone != null" >localphone,</if>
+            <if test="callPhone != null">callphone,</if>
             <if test="length != null ">length,</if>
             <if test="calltime != null" >calltime,</if>
         </trim>
@@ -29,8 +29,8 @@
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null" >#{id},</if>
             <if test="userid != null">#{userid},</if>
-            <if test="localphone != null" >#{localphone},</if>
-            <if test="callphone != null">#{callphone},</if>
+            <if test="loaclPhone != null" >#{loaclPhone},</if>
+            <if test="callPhone != null">#{callPhone},</if>
             <if test="length != null ">#{length},</if>
             <if test="calltime != null" >#{calltime},</if>
         </trim>
@@ -41,6 +41,7 @@
         <if test="userid != null ">
             where userid = #{userid}
         </if>
+        order by calltime desc
         limit #{index},#{limit}
     </select>
 
@@ -49,5 +50,20 @@
         <if test="userid != null ">
             where userid = #{userid}
         </if>
+    </select>
+
+    <select id="getTodayCount" resultType="int">
+        select count(id) from callList
+        Where 1=1
+        <if test="time == null">
+            and To_days(calltime) = To_days(now())
+        </if>
+        <if test="time != null and time != ''">
+            and To_days(calltime) = To_days(#{time})
+        </if>
+        <if test="userid != null ">
+            and userid = #{userid}
+        </if>
+
     </select>
 </mapper>

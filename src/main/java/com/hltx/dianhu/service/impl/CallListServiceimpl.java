@@ -33,4 +33,9 @@ public class CallListServiceimpl implements CallListService {
     public int getCount(Integer userid) {
         return callListMapper.getCount(userid);
     }
+
+    @Override
+    public int getTodayCount(Integer userid, String time) {
+        return callListMapper.getTodayCount(userid, time);
+    }
 }

@@ -25,7 +25,7 @@ public class UsersController {
     @Autowired
     UsesService usesService;
 
-    @GetMapping(value = "login")
+    @PostMapping(value = "login")
     public Map<String,Object> login(String phone,String password){
         Users users = usesService.login(phone,password);
         if (users == null){
@@ -35,12 +35,13 @@ public class UsersController {
     }
 
     @PostMapping("addusers")
-    public Map<String,Object> addUsers(String phone,String sn){
+    public Map<String,Object> addUsers(String phone,String name,String sn,String pwd){
         Users users=new Users();
         users.setAddtime(new Date());
-        users.setPassword(Encription.md5("123456"));
+        users.setPassword(Encription.md5(pwd));
         users.setPhone(phone);
         users.setSn(sn);
+        users.setName(name);
         users.setStatus(0);
         int t = usesService.addUsers(users);
         if (t>0)
@@ -54,6 +55,18 @@ public class UsersController {
         Users users=new Users();
         users.setId(id);
         users.setPassword(Encription.md5(pwd));
+        int t= usesService.updateUsers(users);
+        if (t>0)
+            return BackCodeUtils.getSuccess("SUCCESS");
+        else
+            return BackCodeUtils.getFail();
+    }
+
+    @PostMapping("changeName")
+    public Map<String,Object> changeName(Integer userid,String name){
+        Users users=new Users();
+        users.setId(userid);
+        users.setName(name);
         int t= usesService.updateUsers(users);
         if (t>0)
             return BackCodeUtils.getSuccess("SUCCESS");

@@ -47,4 +47,10 @@ public class CallListController {
         List<CallList> lists = callListService.getByPage(userid, (page-1)*limit, limit);
         return BackCodeUtils.getSuccess(lists,t);
     }
+
+    @PostMapping("getTodayCount")
+    public Map<String,Object> getTodayCount(Integer userid){
+        int t = callListService.getTodayCount(userid,null);
+        return BackCodeUtils.getSuccess(t);
+    }
 }
