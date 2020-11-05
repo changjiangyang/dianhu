@@ -16,7 +16,7 @@
     </sql>
 
     <insert id="addCallList" parameterType="com.hltx.dianhu.beans.CallList" >
-        insert into callList
+        insert into calllist
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null" >id,</if>
             <if test="userid != null">userid,</if>
@@ -37,7 +37,7 @@
     </insert>
 
     <select id="getByPage" resultMap="baseMap" parameterType="int">
-        select <include refid="basesql" /> from callList
+        select <include refid="basesql" /> from calllist
         <if test="userid != null ">
             where userid = #{userid}
         </if>
@@ -46,14 +46,14 @@
     </select>
 
     <select id="getCount" resultType="int">
-        select count(id) from callList
+        select count(id) from calllist
         <if test="userid != null ">
             where userid = #{userid}
         </if>
     </select>
 
     <select id="getTodayCount" resultType="int">
-        select count(id) from callList
+        select count(id) from calllist
         Where 1=1
         <if test="time == null">
             and To_days(calltime) = To_days(now())

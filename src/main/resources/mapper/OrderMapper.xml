@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hltx.dianhu.mapper.OrderMapper">
+    <resultMap id="baseMap" type="com.hltx.dianhu.beans.Orders">
+        <id column="id" property="id"/>
+        <result property="userid" column="userid" />
+        <result property="status" column="status" />
+        <result property="addTime" column="addtime" />
+        <result property="money" column="money" />
+        <result property="otherPayID" column="otherPayID" />
+        <result property="paystyle" column="paystyle" />
+        <result property="payTime" column="payTime" />
+        <result property="price" column="price" />
+        <result property="pro" column="pro" />
+    </resultMap>
+
+    <sql id="baseSql">
+        id ,userid,status,addTime,money,otherPayID,paystyle,payTime,price,pro
+    </sql>
+
+    <insert id="addOrder" parameterType="com.hltx.dianhu.beans.Orders">
+        insert into orders
+        <trim suffix=")" prefix="(" suffixOverrides=",">
+            <if test="id != null" >id,</if>
+            <if test="userid != null" >userid,</if>
+            <if test="status != null" >status,</if>
+            <if test="addTime != null" >addTime,</if>
+            <if test="money != null" >money,</if>
+            <if test="otherPayID != null" >otherPayID,</if>
+            <if test="paystyle != null" >paystyle,</if>
+            <if test="payTime != null" >payTime,</if>
+            <if test="price != null" >price,</if>
+            <if test="pro != null" >pro,</if>
+        </trim>
+        values
+        <trim suffix=")" prefix="(" suffixOverrides=",">
+            <if test="id != null" >#{id},</if>
+            <if test="userid != null" >#{userid},</if>
+            <if test="status != null" >#{status},</if>
+            <if test="addTime != null" >#{addTime},</if>
+            <if test="money != null" >#{money},</if>
+            <if test="otherPayID != null" >#{otherPayID},</if>
+            <if test="paystyle != null" >#{paystyle},</if>
+            <if test="payTime != null" >#{payTime},</if>
+            <if test="price != null" >#{price},</if>
+            <if test="pro != null" >#{pro},</if>
+        </trim>
+    </insert>
+</mapper>
