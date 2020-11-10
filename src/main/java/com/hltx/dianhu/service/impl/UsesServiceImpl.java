@@ -8,6 +8,8 @@ import com.hltx.dianhu.tool.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @description: 用户Sevice
  * @author: ycj
@@ -54,5 +56,20 @@ public class UsesServiceImpl implements UsesService {
     @Override
     public int updateUsers(Users users) {
         return usesMapper.updateUsers(users);
+    }
+
+    @Override
+    public List<Users> getByPage(Integer index, Integer limit) {
+        return usesMapper.getByPage(index, limit);
+    }
+
+    @Override
+    public int getCount() {
+        return usesMapper.getCount();
+    }
+
+    @Override
+    public int deleteUser(Integer id) {
+        return usesMapper.deleteUser(id);
     }
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -68,6 +69,22 @@ public class UsersController {
         users.setId(userid);
         users.setName(name);
         int t= usesService.updateUsers(users);
+        if (t>0)
+            return BackCodeUtils.getSuccess("SUCCESS");
+        else
+            return BackCodeUtils.getFail();
+    }
+
+    @GetMapping(value = "getByPage")
+    public Map<String,Object> getByPage(Integer page,Integer limit){
+        List<Users> users = usesService.getByPage((page-1)*limit,limit);
+        int t= usesService.getCount();
+        return BackCodeUtils.getSuccess(users,t);
+    }
+
+    @GetMapping(value = "delUser")
+    public Map<String,Object> delUser(Integer id){
+        int t= usesService.deleteUser(id);
         if (t>0)
             return BackCodeUtils.getSuccess("SUCCESS");
         else

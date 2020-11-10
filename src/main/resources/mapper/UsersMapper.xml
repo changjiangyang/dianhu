@@ -50,6 +50,19 @@
         where phone = #{phone}
     </select>
 
+    <select id="getByPage" resultMap="baseMap" parameterType="java.lang.Integer">
+        select <include refid="baseSql" /> from users
+        limit #{index},#{limit}
+    </select>
+
+    <select id="getCount" resultType="java.lang.Integer" >
+        select count(id) from users
+    </select>
+
+    <delete id="deleteUser" parameterType="java.lang.Integer">
+        delete from users where id =#{id}
+    </delete>
+
     <update id="updateUsers" parameterType="com.hltx.dianhu.beans.Users">
         update users set
         <trim suffixOverrides=",">

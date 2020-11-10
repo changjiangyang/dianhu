@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hltx.dianhu.mapper.ManageMapper">
+    <resultMap id="baseMap" type="com.hltx.dianhu.beans.Manage">
+        <id column="id" property="id" />
+        <result column="addtime" property="addtime" />
+        <result property="loginName" column="loginName" />
+        <result property="pwd" column="pwd" />
+        <result property="type" column="type" />
+    </resultMap>
+
+    <sql id="baseSql">
+        id,addtime,loginName,pwd,type
+    </sql>
+
+    <insert id="addManageUser" parameterType="com.hltx.dianhu.beans.Manage">
+        insert into manage (addtime,loginName,pwd,type) values
+        (#{addtime},#{loginName},#{pwd},#{type})
+    </insert>
+
+    <select id="login" parameterType="string" resultMap="baseMap">
+        select <include refid="baseSql" /> from manage
+        where loginName= #{loginName}
+    </select>
+
+    <delete id="deleteManage" parameterType="int">
+        delete from manage where id =#{id}
+    </delete>
+
+    <update id="updataManage" parameterType="com.hltx.dianhu.beans.Manage">
+        update manage set
+        <trim suffixOverrides=",">
+            <if test="addtime != null">addtime =#{addtime},</if>
+            <if test="loginName != null">loginName = #{loginName},</if>
+            <if test="pwd!= null and pwd != ''">pwd=#{pwd},</if>
+            <if test="type != null">type = #{type},</if>
+        </trim>
+        where id =#{id}
+    </update>
+</mapper>

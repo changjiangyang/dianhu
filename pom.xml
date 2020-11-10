@@ -67,8 +67,12 @@
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>2.1.2</version>
         </dependency>
-
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+       <!-- <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
             <version>2.2.3.RELEASE</version>
@@ -78,7 +82,7 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
             <version>2.2.3.RELEASE</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>cn.minsin</groupId>
             <artifactId>mutils-wechat-wechatpay-core</artifactId>
