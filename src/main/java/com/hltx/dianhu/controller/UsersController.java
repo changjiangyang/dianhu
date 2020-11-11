@@ -83,7 +83,7 @@ public class UsersController {
     }
 
     @GetMapping(value = "delUser")
-    public Map<String,Object> delUser(Integer id){
+    public Map<String,Object> delUser(String id){
         int t= usesService.deleteUser(id);
         if (t>0)
             return BackCodeUtils.getSuccess("SUCCESS");

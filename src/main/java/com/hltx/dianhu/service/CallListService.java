@@ -8,8 +8,8 @@ import java.util.List;
 public interface CallListService {
     int addCallList(CallList callList);
 
-    List<CallList> getByPage(Integer userid,Integer index,Integer limit);
+    List<CallList> getByPage(String userid,Integer index,Integer limit);
 
-    int getCount(Integer userid);
-    int getTodayCount(Integer userid, String time);
+    int getCount(String userid);
+    int getTodayCount(String userid, String time);
 }

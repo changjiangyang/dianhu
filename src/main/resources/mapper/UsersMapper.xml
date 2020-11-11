@@ -64,7 +64,7 @@
         select count(id) from users
     </select>
 
-    <delete id="deleteUser" parameterType="java.lang.Integer">
+    <delete id="deleteUser" parameterType="java.lang.String">
         delete from users where id =#{id}
     </delete>
 

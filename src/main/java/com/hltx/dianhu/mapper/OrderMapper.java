@@ -4,6 +4,7 @@ import com.hltx.dianhu.beans.Orders;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface OrderMapper {
 
@@ -11,5 +12,5 @@ public interface OrderMapper {
 
     int getCount();
 
-    List<Orders> getBypage(@Param("index") Integer index,@Param("limit") Integer limit);
+    List<Map<String,String>> getBypage(@Param("index") Integer index, @Param("limit") Integer limit);
 }

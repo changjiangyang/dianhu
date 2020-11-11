@@ -8,8 +8,8 @@ spring:
     name: dianhu
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/dianhu?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
-    username: root
-    password: 122654
+    username: admin
+    password: Wt112233.@admin
     driver-class-name: com.mysql.cj.jdbc.Driver
   redis:
     host: 127.0.0.1

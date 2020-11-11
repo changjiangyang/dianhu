@@ -68,7 +68,7 @@ public class OrderController {
         users.setId(id);
         usesService.addUsers(users);
         Orders orders=new Orders();
-
+        id=String.valueOf(System.currentTimeMillis());
         orders.setId(id);
         orders.setStatus(status);
         orders.setUserid(id);
@@ -85,7 +85,7 @@ public class OrderController {
     @GetMapping(value = "getBypage")
     public Map<String,Object> getBypage(Integer page,Integer limit){
         int count = orderService.getCount();
-        List<Orders> orders=orderService.getBypage((page-1)*limit,limit);
+        List<Map<String,String>> orders=orderService.getBypage((page-1)*limit,limit);
         return BackCodeUtils.getSuccess(orders,count);
     }
 }

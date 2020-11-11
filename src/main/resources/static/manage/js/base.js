@@ -1,4 +1,6 @@
-var host = "http://localhost:8300/";
+//var host = "http://localhost:8300/";
+
+var host ="http://"+ window.location.host+"/"
 
  /**
  * @param {number} num

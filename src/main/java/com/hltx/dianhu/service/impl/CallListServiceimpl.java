@@ -25,17 +25,17 @@ public class CallListServiceimpl implements CallListService {
     }
 
     @Override
-    public List<CallList> getByPage(Integer userid, Integer index, Integer limit) {
+    public List<CallList> getByPage(String userid, Integer index, Integer limit) {
         return callListMapper.getByPage(userid, index, limit);
     }
 
     @Override
-    public int getCount(Integer userid) {
+    public int getCount(String userid) {
         return callListMapper.getCount(userid);
     }
 
     @Override
-    public int getTodayCount(Integer userid, String time) {
+    public int getTodayCount(String userid, String time) {
         return callListMapper.getTodayCount(userid, time);
     }
 }

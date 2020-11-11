@@ -70,7 +70,7 @@ public class UsesServiceImpl implements UsesService {
     }
 
     @Override
-    public int deleteUser(Integer id) {
+    public int deleteUser(String id) {
         return usesMapper.deleteUser(id);
     }
 

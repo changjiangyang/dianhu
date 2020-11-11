@@ -36,7 +36,7 @@
         </trim>
     </insert>
 
-    <select id="getByPage" resultMap="baseMap" parameterType="int">
+    <select id="getByPage" resultMap="baseMap" parameterType="string">
         select <include refid="basesql" /> from calllist
         <if test="userid != null ">
             where userid = #{userid}

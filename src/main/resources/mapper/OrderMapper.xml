@@ -52,8 +52,10 @@
         select count(id) from orders
     </select>
 
-    <select id="getBypage" resultMap="baseMap">
-        select <include refid="baseSql" /> from orders
+    <select id="getBypage" resultType="java.util.Map">
+        select  o.id ,o.userid,o.status,o.addTime,o.money,o.otherPayID,o.paystyle,o.payTime,o.price,o.pro      ,u.phone
+        from orders o,users u
+        where u.id = userid
         order by addtime desc limit #{index},#{limit}
     </select>
 </mapper>

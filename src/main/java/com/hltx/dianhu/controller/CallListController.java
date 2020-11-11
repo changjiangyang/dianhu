@@ -40,7 +40,7 @@ public class CallListController {
     }
 
     @GetMapping(value = "getByPage")
-    public Map<String,Object> getByPage(Integer userid,Integer page,Integer limit){
+    public Map<String,Object> getByPage(String userid,Integer page,Integer limit){
         int t = callListService.getCount(userid);
         if (t<=0)
             return BackCodeUtils.getNan();
@@ -49,7 +49,7 @@ public class CallListController {
     }
 
     @PostMapping("getTodayCount")
-    public Map<String,Object> getTodayCount(Integer userid){
+    public Map<String,Object> getTodayCount(String userid){
         int t = callListService.getTodayCount(userid,null);
         return BackCodeUtils.getSuccess(t);
     }

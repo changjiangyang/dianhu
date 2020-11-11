@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @description: 订单服务
@@ -49,7 +50,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Orders> getBypage(Integer index, Integer limit) {
+    public List<Map<String,String>> getBypage(Integer index, Integer limit) {
         return orderMapper.getBypage(index, limit);
     }
 }

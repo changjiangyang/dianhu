@@ -9,9 +9,9 @@ public interface CallListMapper {
 
     int addCallList(CallList callList);
 
-    List<CallList> getByPage(@Param("userid") Integer userid, @Param("index") Integer index,@Param("limit") Integer limit);
+    List<CallList> getByPage(@Param("userid") String userid, @Param("index") Integer index,@Param("limit") Integer limit);
 
-    int getCount(@Param("userid") Integer userid);
+    int getCount(@Param("userid") String userid);
 
-    int getTodayCount(@Param("userid") Integer userid,@Param("time") String time);
+    int getTodayCount(@Param("userid") String userid,@Param("time") String time);
 }
