@@ -4,12 +4,11 @@ import com.hltx.dianhu.beans.Users;
 import com.hltx.dianhu.service.UsesService;
 import com.hltx.dianhu.tool.BackCodeUtils;
 import com.hltx.dianhu.tool.Encription;
+import com.hltx.dianhu.tool.TimeTool;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -52,7 +51,8 @@ public class UsersController {
     }
 
     @PostMapping(value = "changePwd")
-    public Map<String,Object> changePwd(Integer id,String pwd){
+    public Map<String,Object> changePwd(String id,
+                                        @RequestParam(defaultValue = "123456",required = false) String pwd){
         Users users=new Users();
         users.setId(id);
         users.setPassword(Encription.md5(pwd));
@@ -64,7 +64,7 @@ public class UsersController {
     }
 
     @PostMapping("changeName")
-    public Map<String,Object> changeName(Integer userid,String name){
+    public Map<String,Object> changeName(String userid,String name){
         Users users=new Users();
         users.setId(userid);
         users.setName(name);
@@ -91,4 +91,17 @@ public class UsersController {
             return BackCodeUtils.getFail();
     }
 
+    @PostMapping(value = "xuqi")
+    public Map<String,Object> xuqi(String userid,String time) throws ParseException {
+
+        Date endtime=TimeTool.stringToDate(time);
+        Users users=new Users();
+        users.setId(userid);
+        users.setEndtime(endtime);
+        int t =usesService.updateUsers(users);
+        if (t>0)
+            return BackCodeUtils.getSuccess("SUCCESS");
+        else
+            return BackCodeUtils.getFail();
+    }
 }

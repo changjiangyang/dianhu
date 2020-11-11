@@ -11,7 +11,7 @@ public class Orders {
 
     private String id;
 
-    private Integer userid;
+    private String userid;
 
     private String pro;
 
@@ -29,6 +29,8 @@ public class Orders {
 
     private Integer status;
 
+    private Integer proid;
+
     public String getId() {
         return id;
     }
@@ -37,11 +39,11 @@ public class Orders {
         this.id = id;
     }
 
-    public Integer getUserid() {
+    public String getUserid() {
         return userid;
     }
 
-    public void setUserid(Integer userid) {
+    public void setUserid(String userid) {
         this.userid = userid;
     }
 
@@ -107,6 +109,14 @@ public class Orders {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getProid() {
+        return proid;
+    }
+
+    public void setProid(Integer proid) {
+        this.proid = proid;
     }
 
     @Override

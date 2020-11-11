@@ -53,6 +53,7 @@ public class UsesServiceImpl implements UsesService {
         }
     }
 
+
     @Override
     public int updateUsers(Users users) {
         return usesMapper.updateUsers(users);
@@ -71,5 +72,10 @@ public class UsesServiceImpl implements UsesService {
     @Override
     public int deleteUser(Integer id) {
         return usesMapper.deleteUser(id);
+    }
+
+    @Override
+    public Users getByPhone(String phone) {
+        return usesMapper.login(phone);
     }
 }

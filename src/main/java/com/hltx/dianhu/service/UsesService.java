@@ -18,4 +18,8 @@ public interface UsesService {
     int getCount();
 
     int deleteUser(Integer id);
+
+    Users getByPhone(String phone);
+
+
 }

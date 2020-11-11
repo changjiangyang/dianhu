@@ -8,6 +8,30 @@ import java.util.*;
 
 public class TimeTool {
 
+
+    public static Date addDate(Date date,int n){
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        Calendar cd=Calendar.getInstance();//获取一个Calendar对象
+
+            cd.setTime(date);//设置calendar日期
+
+        cd.add(Calendar.MONTH,n);//增加n个月
+
+        //另一种方法
+        //Calendar curr = Calendar.getInstance();
+        //curr.set(Calendar.MONTH,curr.get(Calendar.MONTH)+1); //增加一月
+        //Date date=curr.getTime();
+
+        return cd.getTime();
+       // return sdf.format(cd.getTime());
+    }
+
+    public static Date stringToDate(String time) throws ParseException {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//注意月份是MM
+        Date date = simpleDateFormat.parse(time);
+        return date;
+    }
+
     /**
      * 获得当前日期 yyyy-MM-dd HH:mm:ss
      *

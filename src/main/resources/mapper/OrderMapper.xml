@@ -47,4 +47,13 @@
             <if test="pro != null" >#{pro},</if>
         </trim>
     </insert>
+
+    <select id="getCount" resultType="java.lang.Integer">
+        select count(id) from orders
+    </select>
+
+    <select id="getBypage" resultMap="baseMap">
+        select <include refid="baseSql" /> from orders
+        order by addtime desc limit #{index},#{limit}
+    </select>
 </mapper>

@@ -9,7 +9,7 @@ import java.util.Date;
  **/
 public class Users {
 
-    private Integer id;
+    private String id;
 
     private String phone;
 
@@ -43,11 +43,11 @@ public class Users {
         this.name = name;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
