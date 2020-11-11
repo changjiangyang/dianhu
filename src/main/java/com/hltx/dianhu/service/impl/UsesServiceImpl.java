@@ -78,4 +78,9 @@ public class UsesServiceImpl implements UsesService {
     public Users getByPhone(String phone) {
         return usesMapper.login(phone);
     }
+
+    @Override
+    public Users getByid(String id) {
+        return usesMapper.getByid(id);
+    }
 }

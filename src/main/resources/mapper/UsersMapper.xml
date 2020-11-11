@@ -50,6 +50,11 @@
         where phone = #{phone}
     </select>
 
+    <select id="getByid" resultMap="baseMap">
+        select <include refid="baseSql" /> from users
+        where id = #{id}
+    </select>
+
     <select id="getByPage" resultMap="baseMap" parameterType="java.lang.Integer">
         select <include refid="baseSql" /> from users
         limit #{index},#{limit}

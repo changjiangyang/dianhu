@@ -18,4 +18,6 @@ public interface UsesMapper {
     int getCount();
 
     int deleteUser(Integer id);
+
+    Users getByid(String id);
 }

@@ -25,7 +25,7 @@ public class CallListController {
     CallListService callListService;
 
     @PostMapping(value = "addCallList")
-    public Map<String,Object> addCallList(Integer userid,String localphone,String callphone,String calltime){
+    public Map<String,Object> addCallList(String userid,String localphone,String callphone,String calltime){
         CallList callList=new CallList();
         callList.setCallPhone(callphone);
         callList.setLoaclPhone(localphone);

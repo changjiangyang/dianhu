@@ -21,5 +21,5 @@ public interface UsesService {
 
     Users getByPhone(String phone);
 
-
+    Users getByid(String id);
 }
